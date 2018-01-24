@@ -31,4 +31,11 @@
         <item name="android:layout_weight">0.1</item>
         <item name="android:background">@color/white</item>
     </style>
+
+    <style name="MyCardView" parent="CardView">
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">10dp</item>
+        <item name="cardBackgroundColor">@color/card_color</item>
+    </style>
 </resources>
