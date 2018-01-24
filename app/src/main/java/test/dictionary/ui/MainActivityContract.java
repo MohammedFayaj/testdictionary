@@ -3,7 +3,7 @@ package test.dictionary.ui;
 import test.dictionary.model.Dictionary;
 
 /**
- * Created by imran on 23/01/18.
+
  */
 
 public interface MainActivityContract {
@@ -13,6 +13,7 @@ public interface MainActivityContract {
 
     interface View {
         void showLoading();
+
         void hideLoading();
 
         void populateItems(Dictionary dictionary);

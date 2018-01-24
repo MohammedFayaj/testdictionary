@@ -19,20 +19,6 @@ public class DictionaryItemsAdapter extends RecyclerView.Adapter<DictionaryItems
     private Context mContext;
     private List<DictionaryResultItems> itemsList;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, thumbsUp,thumbsDown;
-        public ImageView thumbnail, overflow;
-
-        public MyViewHolder(View view) {
-            super(view);
-            title = view.findViewById(R.id.title);
-            thumbsUp =  view.findViewById(R.id.tv_thumbsup);
-            thumbsDown =  view.findViewById(R.id.tv_thumbsdown);
-
-        }
-    }
-
-
     public DictionaryItemsAdapter(Context mContext, List<DictionaryResultItems> itemsList) {
         this.mContext = mContext;
         this.itemsList = itemsList;
@@ -64,5 +50,18 @@ public class DictionaryItemsAdapter extends RecyclerView.Adapter<DictionaryItems
     @Override
     public int getItemCount() {
         return itemsList.size();
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView title, thumbsUp, thumbsDown;
+        public ImageView thumbnail, overflow;
+
+        public MyViewHolder(View view) {
+            super(view);
+            title = view.findViewById(R.id.title);
+            thumbsUp = view.findViewById(R.id.tv_thumbsup);
+            thumbsDown = view.findViewById(R.id.tv_thumbsdown);
+
+        }
     }
 }

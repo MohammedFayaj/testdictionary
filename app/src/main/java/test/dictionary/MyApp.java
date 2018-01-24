@@ -9,7 +9,7 @@ import test.dictionary.dagger.MyComponent;
 import test.dictionary.dagger.NetModule;
 
 /**
- * Created by imran on 23/01/18.
+
  */
 
 public class MyApp extends Application {

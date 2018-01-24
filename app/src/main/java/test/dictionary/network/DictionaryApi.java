@@ -6,7 +6,7 @@ import retrofit2.http.Query;
 import test.dictionary.model.Dictionary;
 
 /**
- * Created by imran on 23/01/18.
+
  */
 
 

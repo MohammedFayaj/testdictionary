@@ -26,52 +26,49 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
     @Inject
     DictionaryApi dictionary;
-
-    private ProgressDialog pDialog;
     MainActivityContract.Presenter presenter;
+    private ProgressDialog pDialog;
     private RecyclerView recyclerView;
     private DictionaryItemsAdapter adapter;
     private List<DictionaryResultItems> resultItems;
 
     private EditText etSearchText;
     private ImageButton btnSearch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         bindViews();
-        ((MyApp)getApplication()).getMyComponent(this).injectMe(this);
+        ((MyApp) getApplication()).getMyComponent(this).injectMe(this);
         setPresenter();
-
     }
 
     private void bindViews() {
         etSearchText = findViewById(R.id.search_tem);
         recyclerView = findViewById(R.id.recycler_view);
-
         resultItems = new ArrayList<>();
         adapter = new DictionaryItemsAdapter(this, resultItems);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
-
-
     }
 
     private void setPresenter() {
-        presenter = new MainActivityPresenter(this,dictionary);
+        presenter = new MainActivityPresenter(this, dictionary);
     }
 
-    @Override public void showLoading() {
+    @Override
+    public void showLoading() {
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Searching...");
         pDialog.setCancelable(false);
         pDialog.show();
     }
 
-    @Override public void hideLoading() {
+    @Override
+    public void hideLoading() {
         if (pDialog != null && pDialog.isShowing()) {
             pDialog.dismiss();
             pDialog = null;
@@ -80,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
     @Override
     public void populateItems(Dictionary dictionary) {
-        if(dictionary != null && dictionary.getList() != null) {
+        if (dictionary != null && dictionary.getList() != null) {
             resultItems = dictionary.getList();
             adapter.updateList(resultItems);
         }
@@ -88,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
     public void doSearch(View view) {
         String searchedText = etSearchText.getText().toString();
-        if(!TextUtils.isEmpty(searchedText)) {
+        if (!TextUtils.isEmpty(searchedText)) {
             presenter.doSearch(searchedText);
         }
     }

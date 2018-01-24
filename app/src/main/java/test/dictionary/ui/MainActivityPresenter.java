@@ -25,19 +25,19 @@ public class MainActivityPresenter implements MainActivityContract.Presenter {
         dictionaryApi.getAllItems(term)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError(this::onError )
+                .doOnError(this::onError)
                 .subscribe(this::onSuccess, this::onError);
     }
 
 
     private void onError(Throwable throwable) {
         activity.hideLoading();
-        Log.e("t",throwable.getLocalizedMessage());
+        Log.e("t", throwable.getLocalizedMessage());
     }
 
     private void onSuccess(Dictionary dictionaryItems) {
         activity.hideLoading();
         activity.populateItems(dictionaryItems);
-        Log.e("Suc","suc");
+        Log.e("Suc", "suc");
     }
 }

@@ -20,14 +20,6 @@ public class NetModule {
 
     @Provides
     @PerApplication
-    Gson provideGson() {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
-        return gsonBuilder.create();
-    }
-
-    @Provides
-    @PerApplication
     static OkHttpClient provideOkHttpClient() {
         return new OkHttpClient();
     }
@@ -45,5 +37,13 @@ public class NetModule {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .callFactory(httpClientBuilder.build())
                 .build().create(DictionaryApi.class);
+    }
+
+    @Provides
+    @PerApplication
+    Gson provideGson() {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
+        return gsonBuilder.create();
     }
 }
